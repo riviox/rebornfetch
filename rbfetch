@@ -1887,6 +1887,7 @@ get_de() {
     [[ $de && $WAYLAND_DISPLAY ]] &&
         de+=" (Wayland)"
     
+    # Hyprland fix
     if [ "$de" == "Hyprland" ]; then
         wm="Hyprland"
     fi

@@ -5,7 +5,7 @@ If you're suggesting a new feature then just a description will suffice.
 - [ ] Does this issue still occur in the master branch? (**Required if issue**)
 
 
-#### Neofetch version
+#### rebornfetch version
 
 ## Screenshot
 
@@ -13,8 +13,8 @@ If you're suggesting a new feature then just a description will suffice.
 
 ## Verbose log
 
-1. Run `neofetch -vv 2> neofetchlog`
-2. Upload the contents of `neofetchlog` to pastebin, gist or equivalent.
+1. Run `rbfetch -vv 2> rbfetchlog`
+2. Upload the contents of `rbfetchlog` to pastebin, gist or equivalent.
 
 
 

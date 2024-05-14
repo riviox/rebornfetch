@@ -25,19 +25,6 @@
 - Use `[[ ]]` for tests.
 - Quote **EVERYTHING**.
 
-### ShellCheck
-
-For your contribution to be accepted, your changes need to pass
-ShellCheck.
-
-```sh
-shellcheck neofetch
-```
-
-**Note**: If you have trouble installing ShellCheck. You can open a pull
-request on the repo and our Travis.ci hook will run ShellCheck for you.
-
-
 ### No no's
 
 - Don’t use GNU conventions in commands.
