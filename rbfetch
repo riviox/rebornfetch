@@ -3,12 +3,13 @@
 # shellcheck source=/dev/null
 # shellcheck disable=2009
 #
-# Neofetch: A command-line system information tool written in bash 3.2+.
-# https://github.com/dylanaraps/neofetch
+# rebornfetch: A command-line system information tool written in bash 3.2+.
+# https://github.com/riviox/rebornfetch
 #
 # The MIT License (MIT)
 #
 # Copyright (c) 2015-2021 Dylan Araps
+# Copyright (c) 2024 riviox
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -28,7 +29,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-version=7.1.0
+version=8.0.0
 
 # Fallback to a value of '5' for shells which support bash
 # but do not set the 'BASH_' shell variables (osh).
@@ -48,10 +49,10 @@ LANG=C
 # Fix issues with gsettings.
 export GIO_EXTRA_MODULES=/usr/lib/x86_64-linux-gnu/gio/modules/
 
-# Neofetch default config.
+# rebornfetch default config.
 read -rd '' config <<'EOF'
 # See this wiki page for more info:
-# https://github.com/dylanaraps/neofetch/wiki/Customizing-Info
+# https://github.com/riviox/rebornfetch/wiki/Customizing-Info
 print_info() {
     info title
     info underline
@@ -639,10 +640,10 @@ separator=":"
 # Example:
 #
 # Display colors 0-7 in the blocks.  (8 colors)
-# neofetch --block_range 0 7
+# rebornfetch --block_range 0 7
 #
 # Display colors 0-15 in the blocks. (16 colors)
-# neofetch --block_range 0 15
+# rebornfetch --block_range 0 15
 block_range=(0 15)
 
 # Toggle color blocks
@@ -676,7 +677,7 @@ block_height=1
 # begin printing the columns, in case you want to e.g. center them under your
 # text.
 # Example:
-# col_offset="auto" - Default behavior of neofetch
+# col_offset="auto" - Default behavior of rebornfetch
 # col_offset=7      - Leave 7 spaces then print the colors
 col_offset="auto"
 
@@ -690,8 +691,8 @@ col_offset="auto"
 # Flag:     --bar_char
 #
 # Example:
-# neofetch --bar_char 'elapsed' 'total'
-# neofetch --bar_char '-' '='
+# rebornfetch --bar_char 'elapsed' 'total'
+# rebornfetch --bar_char '-' '='
 bar_char_elapsed="-"
 bar_char_total="="
 
@@ -718,8 +719,8 @@ bar_length=15
 # Flag:     --bar_colors
 #
 # Example:
-# neofetch --bar_colors 3 4
-# neofetch --bar_colors distro 5
+# rebornfetch --bar_colors 3 4
+# rebornfetch --bar_colors distro 5
 bar_color_elapsed="distro"
 bar_color_total="distro"
 
@@ -762,7 +763,7 @@ image_backend="ascii"
 #
 # Default:  'auto'
 # Values:   'auto', 'ascii', 'wallpaper', '/path/to/img', '/path/to/ascii', '/path/to/dir/'
-#           'command output (neofetch --ascii "$(fortune | cowsay -W 30)")'
+#           'command output (rebornfetch --ascii "$(fortune | cowsay -W 30)")'
 # Flag:     --source
 #
 # NOTE: 'auto' will pick the best image source for whatever image backend is used.
@@ -846,7 +847,7 @@ ascii_bold="on"
 
 
 # Image loop
-# Setting this to on will make neofetch redraw the image constantly until
+# Setting this to on will make rebornfetch redraw the image constantly until
 # Ctrl+C is pressed. This fixes display issues in some terminal emulators.
 #
 # Default:  'off'
@@ -856,9 +857,9 @@ image_loop="off"
 
 # Thumbnail directory
 #
-# Default: '~/.cache/thumbnails/neofetch'
+# Default: '~/.cache/thumbnails/rebornfetch'
 # Values:  'dir'
-thumbnail_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/neofetch"
+thumbnail_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/rebornfetch"
 
 # Crop mode
 #
@@ -867,7 +868,7 @@ thumbnail_dir="${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/neofetch"
 # Flag:     --crop_mode
 #
 # See this wiki page to learn about the fit and fill options.
-# https://github.com/dylanaraps/neofetch/wiki/What-is-Waifu-Crop%3F
+# https://github.com/riviox/rebornfetch/wiki/What-is-Waifu-Crop%3F
 crop_mode="normal"
 
 # Crop offset
@@ -2587,8 +2588,8 @@ get_gpu() {
         ;;
 
         "Mac OS X"|"macOS")
-            if [[ -f "${cache_dir}/neofetch/gpu" ]]; then
-                source "${cache_dir}/neofetch/gpu"
+            if [[ -f "${cache_dir}/rebornfetch/gpu" ]]; then
+                source "${cache_dir}/rebornfetch/gpu"
 
             else
                 gpu="$(system_profiler SPDisplaysDataType |\
@@ -4372,7 +4373,7 @@ make_thumbnail() {
     esac
 
     # Create the thumbnail dir if it doesn't exist.
-    mkdir -p "${thumbnail_dir:=${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/neofetch}"
+    mkdir -p "${thumbnail_dir:=${XDG_CACHE_HOME:-${HOME}/.cache}/thumbnails/rebornfetch}"
 
     if [[ ! -f "${thumbnail_dir}/${image_name}" ]]; then
         # Get image size so that we can do a better crop.
@@ -4447,7 +4448,7 @@ display_image() {
                 ueberzug layer --parser bash 0< <(
                     declare -Ap ADD=(\
                         [action]="add"\
-                        [identifier]="neofetch"\
+                        [identifier]="rebornfetch"\
                         [x]=$xoffset [y]=$yoffset\
                         [path]=$image\
                     )
@@ -4779,19 +4780,19 @@ get_user_config() {
         err "Config: Sourced user config. (${config_file})"
         return
 
-    elif [[ -f "${XDG_CONFIG_HOME}/neofetch/config.conf" ]]; then
-        source "${XDG_CONFIG_HOME}/neofetch/config.conf"
-        err "Config: Sourced user config.    (${XDG_CONFIG_HOME}/neofetch/config.conf)"
+    elif [[ -f "${XDG_CONFIG_HOME}/rebornfetch/config.conf" ]]; then
+        source "${XDG_CONFIG_HOME}/rebornfetch/config.conf"
+        err "Config: Sourced user config.    (${XDG_CONFIG_HOME}/rebornfetch/config.conf)"
 
-    elif [[ -f "${XDG_CONFIG_HOME}/neofetch/config" ]]; then
-        source "${XDG_CONFIG_HOME}/neofetch/config"
-        err "Config: Sourced user config.    (${XDG_CONFIG_HOME}/neofetch/config)"
+    elif [[ -f "${XDG_CONFIG_HOME}/rebornfetch/config" ]]; then
+        source "${XDG_CONFIG_HOME}/rebornfetch/config"
+        err "Config: Sourced user config.    (${XDG_CONFIG_HOME}/rebornfetch/config)"
 
     elif [[ -z "$no_config" ]]; then
-        config_file="${XDG_CONFIG_HOME}/neofetch/config.conf"
+        config_file="${XDG_CONFIG_HOME}/rebornfetch/config.conf"
 
         # The config file doesn't exist, create it.
-        mkdir -p "${XDG_CONFIG_HOME}/neofetch/"
+        mkdir -p "${XDG_CONFIG_HOME}/rebornfetch/"
         printf '%s\n' "$config" > "$config_file"
     fi
 }
@@ -4817,8 +4818,8 @@ bar() {
 
 cache() {
     if [[ "$2" ]]; then
-        mkdir -p "${cache_dir}/neofetch"
-        printf "%s" "${1/*-}=\"$2\"" > "${cache_dir}/neofetch/${1/*-}"
+        mkdir -p "${cache_dir}/rebornfetch"
+        printf "%s" "${1/*-}=\"$2\"" > "${cache_dir}/rebornfetch/${1/*-}"
     fi
 }
 
@@ -4897,7 +4898,7 @@ cache_uname() {
 
     if [[ "$kernel_name" == "Darwin" ]]; then
         # macOS can report incorrect versions unless this is 0.
-        # https://github.com/dylanaraps/neofetch/issues/1607
+        # https://github.com/riviox/rebornfetch/issues/1607
         export SYSTEM_VERSION_COMPAT=0
 
         IFS=$'\n' read -d "" -ra sw_vers <<< "$(awk -F'<|>' '/key|string/ {print $3}' \
@@ -4962,9 +4963,9 @@ decode_url() {
 # FINISH UP
 
 usage() { printf "%s" "\
-Usage: neofetch func_name --option \"value\" --option \"value\"
+Usage: rebornfetch func_name --option \"value\" --option \"value\"
 
-Neofetch is a CLI system information tool written in BASH. Neofetch
+rebornfetch is a CLI system information tool written in BASH. rebornfetch
 displays information about your system next to an image, your OS logo,
 or any ASCII file of your choice.
 
@@ -4976,17 +4977,17 @@ INFO:
     func_name                   Specify a function name (second part of info() from config) to
                                 quickly display only that function's information.
 
-                                Example: neofetch uptime --uptime_shorthand tiny
+                                Example: rebornfetch uptime --uptime_shorthand tiny
 
-                                Example: neofetch uptime disk wm memory
+                                Example: rebornfetch uptime disk wm memory
 
                                 This can be used in bars and scripts like so:
 
-                                memory=\"\$(neofetch memory)\"; memory=\"\${memory##*: }\"
+                                memory=\"\$(rebornfetch memory)\"; memory=\"\${memory##*: }\"
 
                                 For multiple outputs at once (each line of info in an array):
 
-                                IFS=\$'\\n' read -d \"\" -ra info < <(neofetch memory uptime wm)
+                                IFS=\$'\\n' read -d \"\" -ra info < <(rebornfetch memory uptime wm)
 
                                 info=(\"\${info[@]##*: }\")
 
@@ -4995,7 +4996,7 @@ INFO:
                                 'print_info()' function inside the config file.
                                 For example: 'info \"Memory\" memory' would be '--disable memory'
 
-                                NOTE: You can supply multiple args. eg. 'neofetch --disable cpu gpu'
+                                NOTE: You can supply multiple args. eg. 'rebornfetch --disable cpu gpu'
 
     --title_fqdn on/off         Hide/Show Fully Qualified Domain Name in title.
     --package_managers on/off   Hide/Show Package Manager names . (on, tiny, off)
@@ -5114,7 +5115,7 @@ IMAGE BACKEND:
 
     --ascii source              Shortcut to use 'ascii' backend.
 
-                                NEW: neofetch --ascii \"\$(fortune | cowsay -W 30)\"
+                                NEW: rebornfetch --ascii \"\$(fortune | cowsay -W 30)\"
 
     --caca source               Shortcut to use 'caca' backend.
     --catimg source             Shortcut to use 'catimg' backend.
@@ -5222,15 +5223,15 @@ OTHER:
     --print_config              Print the default config file to stdout.
     --stdout                    Turn off all colors and disables any ASCII/image backend.
     --help                      Print this text and exit
-    --version                   Show neofetch version
+    --version                   Show rebornfetch version
     -v                          Display error messages.
     -vv                         Display a verbose log for error reporting.
 
 DEVELOPER:
-    --gen-man                   Generate a manpage for Neofetch in your PWD. (Requires GNU help2man)
+    --gen-man                   Generate a manpage for rebornfetch in your PWD. (Requires GNU help2man)
 
 
-Report bugs to https://github.com/dylanaraps/neofetch/issues
+Report bugs to https://github.com/riviox/rebornfetch/issues
 
 "
 exit 1
@@ -5379,8 +5380,8 @@ get_args() {
             "--gap") gap="$2" ;;
             "--clean")
                 [[ -d "$thumbnail_dir" ]] && rm -rf "$thumbnail_dir"
-                rm -rf "/Library/Caches/neofetch/"
-                rm -rf "/tmp/neofetch/"
+                rm -rf "/Library/Caches/rebornfetch/"
+                rm -rf "/tmp/rebornfetch/"
                 exit
             ;;
 
@@ -5423,12 +5424,12 @@ get_args() {
             "-vv") set -x; verbose="on" ;;
             "--help") usage ;;
             "--version")
-                printf '%s\n' "Neofetch $version"
+                printf '%s\n' "rebornfetch $version"
                 exit 1
             ;;
             "--gen-man")
                 help2man -n "A fast, highly customizable system info script" \
-                          -N ./neofetch -o neofetch.1
+                          -N ./rebornfetch -o rebornfetch.1
                 exit 1
             ;;
 
@@ -11574,9 +11575,9 @@ main() {
     [[ $image_backend == *w3m* ]] && display_image
     [[ $image_backend == *ueberzug* ]] && display_image
 
-    # Add neofetch info to verbose output.
-    err "Neofetch command: $0 $*"
-    err "Neofetch version: $version"
+    # Add rebornfetch info to verbose output.
+    err "rebornfetch command: $0 $*"
+    err "rebornfetch version: $version"
 
     [[ $verbose == on ]] && printf '%b\033[m' "$err" >&2
 
