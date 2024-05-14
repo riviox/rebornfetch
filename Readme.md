@@ -15,8 +15,8 @@ The overall purpose of rebornfetch is to be used in screen-shots of your system.
 
 The information by default is displayed alongside your operating system's logo. You can further configure rebornfetch to instead use an image, a custom ASCII file, your wallpaper or nothing at all.
 
-<img src="https://i.imgur.com/lUrkQBN.png" alt="rebornfetch" align="right" height="240px">
-
+<img src="art/screenshot1.png" alt="rebornfetch" align="right" height="240px">
+![alt text](image.png)
 You can further configure rebornfetch to display exactly what you want it to. Through the use of command-line flags and the configuration file you can change existing information outputs or add your own custom ones.
 
 rebornfetch supports almost 150 different operating systems. From Linux to Windows, all the way to more obscure operating systems like Minix, AIX and Haiku. If your favourite operating system is unsupported: Open up an issue and support will be added.
