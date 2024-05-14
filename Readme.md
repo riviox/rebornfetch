@@ -6,7 +6,6 @@
 <a href="https://github.com/riviox/rebornfetch/releases"><img src="https://img.shields.io/github/release/riviox/rebornfetch.svg"></a>
 <a href="https://repology.org/metapackage/rebornfetch"><img src="https://repology.org/badge/tiny-repos/rebornfetch.svg" alt="Packaging status"></a>
 </p>
-![alt text](image.png)
 <img src="art/screenshot2.png" alt="rebornfetch" align="right" height="240px">
 
 rebornfetch is a command-line system information tool written in `bash 3.2+`. rebornfetch displays information about your operating system, software and hardware in an aesthetic and visually pleasing way.
