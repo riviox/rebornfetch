@@ -24,4 +24,4 @@ rebornfetch supports almost 150 different operating systems. From Linux to Windo
 
 ### More: \[[Dependencies](https://github.com/riviox/rebornfetch/wiki/Dependencies)\] \[[Installation](https://github.com/riviox/rebornfetch/wiki/Installation)\] \[[Wiki](https://github.com/riviox/rebornfetch/wiki)\]
 ### Copyright (c) 2015-2021 Dylan Araps
-### Copyright (c) 2024 riviox
+### Copyright (c) 2024-now riviox
