@@ -1886,6 +1886,10 @@ get_de() {
     #  - Add display of X11, Arcan and anything else relevant.
     [[ $de && $WAYLAND_DISPLAY ]] &&
         de+=" (Wayland)"
+    
+    if [ "$de" == "Hyprland" ]; then
+        wm="Hyprland"
+    fi
 
     de_run=1
 }
