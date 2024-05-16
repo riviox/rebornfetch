@@ -75,6 +75,8 @@ print_info() {
     info "GPU" gpu
     info "Memory" memory
 
+    # info "Motherboard" mb_name
+    # info "BIOS" bios
     # info "GPU Driver" gpu_driver  # Linux/macOS only
     # info "Disk" disk
     # info "Battery" battery
@@ -1422,6 +1424,24 @@ get_kernel() {
         esac
 }
 
+# get Motherboard
+
+get_mb_name() {
+    mb_vendor=$(cat /sys/class/dmi/id/board_vendor)
+    mb_model=$(cat /sys/class/dmi/id/board_name)
+    mb_name=$mb_vendor$mb_model
+    return
+}
+
+# get Bios version
+
+get_bios() {
+    bios_vendor=$(cat /sys/class/dmi/id/bios_vendor)
+    bios=$(cat /sys/class/dmi/id/bios_version)
+    bios=$bios_vendor" "$bios
+    return
+}
+
 get_uptime() {
     # Get uptime in seconds.
     case $os in
@@ -1888,9 +1908,8 @@ get_de() {
         de+=" (Wayland)"
     
     # Hyprland fix
-    if [ "$de" == "Hyprland" ]; then
+    [[ "$de" == "Hyprland" ]] &&
         wm="Hyprland"
-    fi
 
     de_run=1
 }
@@ -11557,6 +11576,8 @@ main() {
     get_simple "$@"
     get_distro
     get_bold
+    get_bios
+    get_mb_name
     get_distro_ascii
     [[ $stdout == on ]] && stdout
 
