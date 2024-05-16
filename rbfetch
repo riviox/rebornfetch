@@ -29,7 +29,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-version=8.0.1
+version=8.2.0
 
 # Fallback to a value of '5' for shells which support bash
 # but do not set the 'BASH_' shell variables (osh).
@@ -1437,8 +1437,8 @@ get_mb_name() {
 
 get_bios() {
     bios_vendor=$(cat /sys/class/dmi/id/bios_vendor)
-    bios=$(cat /sys/class/dmi/id/bios_version)
-    bios=$bios_vendor" "$bios
+    bios_ver=$(cat /sys/class/dmi/id/bios_version)
+    bios=$bios_vendor" "$bios_ver
     return
 }
 
