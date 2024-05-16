@@ -1,6 +1,5 @@
 # Example RebornFetch config
-![alt text](../art/screenshot.png)
+![ss](https://i.imgur.com/SRT11wo.png)
 put
 * [config.conf](config.conf)
-* [gurl.jpeg](gurl.jpeg)
 in ~/.config/rebornfetch/
