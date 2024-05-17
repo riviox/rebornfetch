@@ -22,6 +22,10 @@ You can further configure rebornfetch to display exactly what you want it to. Th
 
 rebornfetch supports almost 150 different operating systems. From Linux to Windows, all the way to more obscure operating systems like Minix, AIX and Haiku. If your favourite operating system is unsupported: Open up an issue and support will be added.
 
+# Install with [flash](https://github.com/riviox/flash)
+```bash
+flash -S riviox/rebornfetch
+```
 
 ### More: \[[Dependencies](https://github.com/riviox/rebornfetch/wiki/Dependencies)\] \[[Installation](https://github.com/riviox/rebornfetch/wiki/Installation)\] \[[Wiki](https://github.com/riviox/rebornfetch/wiki)\]
 ### Copyright (c) 2015-2021 Dylan Araps
