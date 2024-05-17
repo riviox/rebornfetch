@@ -37,7 +37,7 @@
 - Don’t use `sed`.
     - Use `bash`'s built-in [parameter expansion](http://wiki.bash-hackers.org/syntax/pe).
 - Don’t use `cat`.
-    - Use `bash`'s built-in syntax (`file="$(< /path/to/file.txt)")`).
+    - Use `bash`'s built-in syntax (`file="$(< /path/to/file.txt)"`).
 - Don’t use `grep "pattern" | awk '{ printf }'`.
     - Use `awk '/pattern/ { printf }'`
 - Don’t use `wc`.
