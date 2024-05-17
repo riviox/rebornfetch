@@ -10892,6 +10892,7 @@ ${c1}  ▀█████████    ███████${c2}███▀�
 EOF
         ;;
 
+# https://github.com/dylanaraps/neofetch/pull/2461
         "Tortoise"*)
             set_colors 2 2 7 1
             read -rd '' ascii_data <<'EOF'
