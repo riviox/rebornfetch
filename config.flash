@@ -2,3 +2,4 @@ exec=sudo make install
 name=rebornfetch
 desc=neofetch fork
 clear=true
+deps=bash
